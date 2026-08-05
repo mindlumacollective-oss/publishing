@@ -1175,6 +1175,7 @@
 
         <div class="roadmap-form-card">
           <form id="roadmap-form" novalidate>
+            <input type="hidden" name="_subject" value="Roadmap request — Mindluma Collective" />
             <div id="roadmap-form-fields">
               <div class="roadmap-form-row">
                 <div class="field">
@@ -1192,6 +1193,7 @@
                 <span class="spinner" aria-hidden="true"></span>
                 <span class="btn-label">Send Me the Roadmap</span>
               </button>
+              <p class="error-message" id="roadmap-submit-error" role="alert"></p>
               <p class="roadmap-trust">Free forever. One email, no spam, unsubscribe anytime.</p>
             </div>
           </form>
@@ -1385,6 +1387,7 @@
 
       <div class="reveal">
         <form id="enquiry-form" novalidate>
+          <input type="hidden" name="_subject" value="New book enquiry — Mindluma Collective" />
           <div id="form-fields">
             <div class="form-row">
               <div class="field">
@@ -1434,6 +1437,7 @@
             <span class="spinner" aria-hidden="true"></span>
             <span class="btn-label">Send Enquiry</span>
           </button>
+          <p class="error-message" id="submit-error" role="alert"></p>
         </form>
       </div>
     </div>
@@ -1678,6 +1682,22 @@
 
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    /* ---------------- Formspree submission ---------------- */
+    // Create a form at https://formspree.io and swap in its endpoint ID.
+    var FORMSPREE_FORM_ID = "YOUR_FORM_ID";
+    var GENERIC_SUBMIT_ERROR = "Something went wrong sending that — please try again, or email us directly at hello@mindlumacollective.com.";
+
+    function submitToFormspree(formEl) {
+      return fetch("https://formspree.io/f/" + FORMSPREE_FORM_ID, {
+        method: "POST",
+        body: new FormData(formEl),
+        headers: { Accept: "application/json" }
+      }).then(function (response) {
+        if (!response.ok) throw new Error("Formspree submission failed with status " + response.status);
+        return response;
+      });
+    }
+
     /* ---------------- Roadmap (lead magnet) form ---------------- */
     var roadmapForm = document.getElementById("roadmap-form");
     var roadmapSubmitBtn = document.getElementById("roadmap-submit-btn");
@@ -1712,6 +1732,10 @@
         return;
       }
 
+      var roadmapErrorEl = document.getElementById("roadmap-submit-error");
+      roadmapErrorEl.textContent = "";
+      roadmapErrorEl.classList.remove("is-visible");
+
       roadmapSubmitBtn.disabled = true;
       roadmapSubmitBtn.classList.add("is-loading");
       roadmapBtnLabel.textContent = "Sending…";
@@ -1719,30 +1743,36 @@
       var firstName = document.getElementById("rmFirstName").value.trim();
       var email = document.getElementById("rmEmail").value.trim();
 
-      setTimeout(function () {
-        console.log("Roadmap requested:", { firstName: firstName, email: email });
+      submitToFormspree(roadmapForm)
+        .then(function () {
+          var wrapper = roadmapForm.parentElement;
+          var panel = document.createElement("div");
+          panel.className = "success-panel";
 
-        var wrapper = roadmapForm.parentElement;
-        var panel = document.createElement("div");
-        panel.className = "success-panel";
+          var iconWrap = document.createElement("div");
+          iconWrap.className = "icon-check";
+          iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
-        var iconWrap = document.createElement("div");
-        iconWrap.className = "icon-check";
-        iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          var heading = document.createElement("h3");
+          heading.textContent = "You're in, " + firstName + " — check your inbox.";
 
-        var heading = document.createElement("h3");
-        heading.textContent = "You're in, " + firstName + " — check your inbox.";
+          var body = document.createElement("p");
+          body.textContent = "The roadmap is on its way to " + email + ".";
 
-        var body = document.createElement("p");
-        body.textContent = "The roadmap is on its way to " + email + ".";
+          panel.appendChild(iconWrap);
+          panel.appendChild(heading);
+          panel.appendChild(body);
 
-        panel.appendChild(iconWrap);
-        panel.appendChild(heading);
-        panel.appendChild(body);
-
-        wrapper.innerHTML = "";
-        wrapper.appendChild(panel);
-      }, 1200);
+          wrapper.innerHTML = "";
+          wrapper.appendChild(panel);
+        })
+        .catch(function () {
+          roadmapSubmitBtn.disabled = false;
+          roadmapSubmitBtn.classList.remove("is-loading");
+          roadmapBtnLabel.textContent = "Send Me the Roadmap";
+          roadmapErrorEl.textContent = GENERIC_SUBMIT_ERROR;
+          roadmapErrorEl.classList.add("is-visible");
+        });
     });
 
     /* ---------------- Enquiry form validation & submit ---------------- */
@@ -1762,7 +1792,7 @@
     });
 
     function handleSubmit(event) {
-      // Step 1: stop the native submission — we validate and fake-send manually.
+      // Step 1: stop the native submission — we validate, then send via fetch.
       event.preventDefault();
 
       // Step 2: reset any errors left over from a previous attempt.
@@ -1789,48 +1819,52 @@
       }
 
       // Step 5: valid — lock the button and show a loading state.
+      var submitErrorEl = document.getElementById("submit-error");
+      submitErrorEl.textContent = "";
+      submitErrorEl.classList.remove("is-visible");
+
       submitBtn.disabled = true;
       submitBtn.classList.add("is-loading");
       btnLabel.textContent = "Sending…";
 
-      // Step 6: gather the payload for the (simulated) backend call.
-      var formData = {
-        fullName: document.getElementById("fullName").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        stage: document.getElementById("stage").value,
-        genre: document.getElementById("genre").value.trim(),
-        details: document.getElementById("details").value.trim(),
-        consent: document.getElementById("consent").checked
-      };
+      // Step 6: gather the payload for the success message (the real payload goes via FormData in the request itself).
+      var fullName = document.getElementById("fullName").value.trim();
+      var email = document.getElementById("email").value.trim();
 
-      // Step 7: simulate an async network call, then show the success panel.
-      setTimeout(function () {
-        console.log("Enquiry submitted:", formData);
+      // Step 7: send the enquiry to Formspree, then show the success panel.
+      submitToFormspree(form)
+        .then(function () {
+          var firstName = fullName.split(" ")[0];
+          var wrapper = form.parentElement;
 
-        var firstName = formData.fullName.split(" ")[0];
-        var wrapper = form.parentElement;
+          // Built with DOM APIs (not innerHTML) so user-entered text can't be parsed as markup.
+          var panel = document.createElement("div");
+          panel.className = "success-panel";
 
-        // Built with DOM APIs (not innerHTML) so user-entered text can't be parsed as markup.
-        var panel = document.createElement("div");
-        panel.className = "success-panel";
+          var iconWrap = document.createElement("div");
+          iconWrap.className = "icon-check";
+          iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
-        var iconWrap = document.createElement("div");
-        iconWrap.className = "icon-check";
-        iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          var heading = document.createElement("h3");
+          heading.textContent = "Thanks, " + firstName + " — an editor will be in touch within one business day.";
 
-        var heading = document.createElement("h3");
-        heading.textContent = "Thanks, " + firstName + " — an editor will be in touch within one business day.";
+          var body = document.createElement("p");
+          body.textContent = "Keep an eye on " + email + " for a reply from our team.";
 
-        var body = document.createElement("p");
-        body.textContent = "Keep an eye on " + formData.email + " for a reply from our team.";
+          panel.appendChild(iconWrap);
+          panel.appendChild(heading);
+          panel.appendChild(body);
 
-        panel.appendChild(iconWrap);
-        panel.appendChild(heading);
-        panel.appendChild(body);
-
-        wrapper.innerHTML = "";
-        wrapper.appendChild(panel);
-      }, 1200);
+          wrapper.innerHTML = "";
+          wrapper.appendChild(panel);
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("is-loading");
+          btnLabel.textContent = "Send Enquiry";
+          submitErrorEl.textContent = GENERIC_SUBMIT_ERROR;
+          submitErrorEl.classList.add("is-visible");
+        });
     }
 
     form.addEventListener("submit", handleSubmit);
