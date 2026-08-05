@@ -14,9 +14,10 @@ Open `index.html` directly in a browser — no build or dev server required. (If
 
 - CSS custom properties live in `:root`: a color palette (`--color-ink`, `--color-ink-soft`, `--color-paper`, `--color-white`, `--color-off-white`, `--color-lime`, `--color-lime-text`, `--color-lime-soft`, `--color-grey`) and a spacing scale (`--space-1` through `--space-9`). `--color-lime` (bright) is for dark backgrounds and icon chips; `--color-lime-text` (deep olive) is the accessible variant for text/links on light backgrounds. Reuse these tokens rather than hardcoding new values.
 - Section anchors — `#services`, `#process`, `#roadmap`, `#testimonials`, `#contact` — are shared between the nav links and in-page CTAs; keep `id`s and hrefs in sync if sections change.
-- All JS is wrapped in a single IIFE at the bottom of the file, organized into commented blocks: sticky nav, mobile hamburger, scroll-reveal (`IntersectionObserver`), hero stat counters, testimonial carousel dots, shared field-error helpers, the lead-magnet form, the enquiry form, and footer year.
-- `prefers-reduced-motion` is respected throughout — the hero gradient, hero-shelf/book-mock float animations, and `.reveal` transitions are disabled in CSS, and counter/scroll animations are skipped in JS.
+- All JS is wrapped in a single IIFE at the bottom of the file, organized into commented blocks: sticky nav, mobile hamburger, scroll-reveal (`IntersectionObserver`), hero stat counters, testimonial carousel dots, shared field-error helpers, the lead-magnet form, the enquiry form, the WhatsApp widget, and footer year.
+- `prefers-reduced-motion` is respected throughout — the hero gradient, hero-shelf/book-mock float animations, `.reveal` transitions, and the WhatsApp toggle's pulse/panel animations are disabled in CSS, and counter/scroll animations are skipped in JS.
 - There are two forms, both client-side only (validate in the browser, simulate submission with `setTimeout` — no backend): the lead-magnet opt-in (`#roadmap-form`) and the consultation enquiry (`#enquiry-form`).
+- A floating WhatsApp widget (`#wa-widget`, bottom-right) opens a panel with suggested quick-reply prompts and a "Start Chat" CTA, all linking out to `wa.me` with a prefilled message — styled with the same ink/lime icon-chip pattern used elsewhere on the page (`.service-icon`, `.avatar`, `.step-badge`), not WhatsApp's default brand green.
 - Contact details, the canonical/OG URLs, and the JSON-LD business info in `<head>` are realistic-looking placeholders — swap them for real values before launch.
 
 ## Deployment
