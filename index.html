@@ -1,14 +1,62 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pulse &amp; Co. — Ideas that move markets.</title>
-<meta name="description" content="Pulse & Co. is a marketing and advertising agency that builds brands people actually remember." />
+<title>Mindluma Collective | Self-Publishing &amp; Author Services — From Manuscript to Market</title>
+<meta name="description" content="Mindluma Collective helps independent authors edit, design, and launch books that sell — while you keep 100% of your rights and royalties. Get the free publishing roadmap." />
+<meta name="author" content="Mindluma Collective" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.mindlumacollective.com/" />
+<meta name="theme-color" content="#14171C" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mindluma Collective" />
+<meta property="og:title" content="Mindluma Collective | Self-Publishing & Author Services" />
+<meta property="og:description" content="Editorial, design, and launch support that turns manuscripts into books people actually buy — while you keep your rights and royalties." />
+<meta property="og:url" content="https://www.mindlumacollective.com/" />
+<meta property="og:image" content="https://www.mindlumacollective.com/og-image.jpg" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Mindluma Collective | Self-Publishing & Author Services" />
+<meta name="twitter:description" content="Editorial, design, and launch support that turns manuscripts into books people actually buy — while you keep your rights and royalties." />
+<meta name="twitter:image" content="https://www.mindlumacollective.com/og-image.jpg" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%225%22 fill=%22%2314171C%22/><path d=%22M7 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z%22 fill=%22%23C6F135%22/></svg>" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Mindluma Collective",
+  "description": "Author-services collective offering developmental editing, cover and interior design, formatting, distribution, and launch marketing for independent authors.",
+  "url": "https://www.mindlumacollective.com/",
+  "email": "hello@mindlumacollective.com",
+  "telephone": "+1-212-555-0148",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "118 Ludlow Street, Suite 3",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10002",
+    "addressCountry": "US"
+  },
+  "areaServed": "Worldwide",
+  "priceRange": "$$",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "210"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   /* ---------- Reset ---------- */
@@ -22,12 +70,17 @@
 
   /* ---------- Design tokens ---------- */
   :root {
-    --color-ink: #0F1115;
+    --color-ink: #14171C;
+    --color-ink-soft: #22262E;
+    --color-paper: #FBF8F1;
+    --color-white: #FFFFFF;
     --color-off-white: #FAF9F6;
-    --color-accent: #FF4D2E;
-    --color-grey: #8A8F98;
+    --color-lime: #C6F135;
+    --color-lime-text: #5E7A00;
+    --color-lime-soft: rgba(198, 241, 53, 0.14);
+    --color-grey: #6E7178;
 
-    --font-display: 'Space Grotesk', sans-serif;
+    --font-display: 'Fraunces', serif;
     --font-body: 'Inter', sans-serif;
 
     --space-1: 0.25rem;
@@ -52,7 +105,7 @@
 
   body {
     font-family: var(--font-body);
-    background: var(--color-off-white);
+    background: var(--color-paper);
     color: var(--color-ink);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -73,16 +126,35 @@
 
   section { scroll-margin-top: var(--nav-height); }
 
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    background: var(--color-lime);
+    color: var(--color-ink);
+    padding: var(--space-2) var(--space-4);
+    z-index: 1000;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+  }
+  .skip-link:focus { left: var(--space-3); top: var(--space-3); }
+
   .eyebrow {
     display: inline-block;
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-lime-text);
     margin-bottom: var(--space-3);
   }
+  .eyebrow.on-dark { color: var(--color-lime); }
 
   /* ---------- Buttons ---------- */
   .btn {
@@ -92,7 +164,7 @@
     gap: var(--space-2);
     padding: 0.9rem 1.8rem;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
     border: 1.5px solid transparent;
     transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
@@ -102,22 +174,30 @@
   .btn:active { transform: translateY(0); }
 
   .btn-primary {
-    background: var(--color-accent);
-    color: var(--color-off-white);
+    background: var(--color-lime);
+    color: var(--color-ink);
   }
-  .btn-primary:hover { background: #ff6440; }
+  .btn-primary:hover { background: #d7fc5f; }
 
   .btn-ghost {
     background: transparent;
     border-color: rgba(250, 249, 246, 0.35);
     color: var(--color-off-white);
   }
-  .btn-ghost:hover { border-color: var(--color-off-white); background: rgba(250, 249, 246, 0.08); }
+  .btn-ghost:hover { border-color: var(--color-lime); background: rgba(198, 241, 53, 0.1); }
+
+  .btn-ghost-dark {
+    background: transparent;
+    border-color: rgba(20, 23, 28, 0.2);
+    color: var(--color-ink);
+  }
+  .btn-ghost-dark:hover { border-color: var(--color-ink); background: rgba(20, 23, 28, 0.05); }
 
   .btn-sm {
     padding: 0.6rem 1.3rem;
     font-size: 0.85rem;
   }
+  .btn-block { width: 100%; }
 
   /* ---------- Nav ---------- */
   .site-header {
@@ -128,13 +208,13 @@
     height: var(--nav-height);
     display: flex;
     align-items: center;
-    background: rgba(15, 17, 21, 0);
+    background: rgba(20, 23, 28, 0);
     border-bottom: 1px solid transparent;
     transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
   }
   .site-header.is-scrolled {
-    background: rgba(15, 17, 21, 0.86);
-    border-bottom-color: rgba(250, 249, 246, 0.08);
+    background: rgba(20, 23, 28, 0.9);
+    border-bottom-color: rgba(198, 241, 53, 0.12);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
@@ -147,13 +227,24 @@
   }
 
   .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--color-off-white);
     letter-spacing: -0.01em;
   }
-  .logo span { color: var(--color-accent); }
+  .logo .logo-mark { color: var(--color-lime); }
+  .logo .logo-sub {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250, 249, 246, 0.55);
+  }
 
   .nav-links {
     display: flex;
@@ -166,13 +257,13 @@
     font-size: 0.95rem;
     transition: color 0.2s ease;
   }
-  .nav-links a:not(.btn):hover { color: var(--color-accent); }
+  .nav-links a:not(.btn):hover { color: var(--color-lime); }
 
   .nav-toggle {
     display: none;
     background: none;
     border: none;
-    padding: var(--space-2);
+    padding: var(--space-3);
     z-index: 110;
   }
   .nav-toggle span,
@@ -190,8 +281,8 @@
   .nav-toggle span::before { top: -8px; }
   .nav-toggle span::after { top: 8px; }
   .nav-toggle[aria-expanded="true"] span { background: transparent; }
-  .nav-toggle[aria-expanded="true"] span::before { transform: translateY(8px) rotate(45deg); }
-  .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-8px) rotate(-45deg); }
+  .nav-toggle[aria-expanded="true"] span::before { transform: translateY(8px) rotate(45deg); background: var(--color-lime); }
+  .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-8px) rotate(-45deg); background: var(--color-lime); }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -209,9 +300,9 @@
     position: absolute;
     inset: -25%;
     background:
-      radial-gradient(circle at 18% 22%, rgba(255, 77, 46, 0.28), transparent 45%),
-      radial-gradient(circle at 82% 75%, rgba(255, 77, 46, 0.16), transparent 50%),
-      linear-gradient(135deg, #0f1115 0%, #181c24 45%, #0f1115 100%);
+      radial-gradient(circle at 18% 22%, rgba(198, 241, 53, 0.22), transparent 45%),
+      radial-gradient(circle at 82% 75%, rgba(198, 241, 53, 0.12), transparent 50%),
+      linear-gradient(135deg, #14171C 0%, #1c2129 45%, #14171C 100%);
     background-size: 200% 200%;
     animation: gradientShift 20s ease-in-out infinite;
     z-index: 0;
@@ -231,18 +322,19 @@
     50% { background-position: 100% 50%; }
   }
 
-  .hero-content { position: relative; z-index: 1; padding-block: var(--space-8); }
+  .hero-content { position: relative; z-index: 1; padding-block: var(--space-8); display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-7); align-items: center; }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    font-weight: 700;
-    max-width: 16ch;
+    font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+    font-weight: 600;
+    max-width: 15ch;
   }
+  .hero h1 em { color: var(--color-lime); font-style: normal; }
 
   .hero p.lede {
     margin-top: var(--space-4);
-    max-width: 60ch;
-    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    max-width: 52ch;
+    font-size: clamp(1.02rem, 1.4vw, 1.2rem);
     color: rgba(250, 249, 246, 0.72);
   }
 
@@ -261,9 +353,9 @@
   }
   .stat-number {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
     font-weight: 700;
-    color: var(--color-accent);
+    color: var(--color-lime);
   }
   .stat-label {
     margin-top: var(--space-1);
@@ -271,17 +363,136 @@
     color: rgba(250, 249, 246, 0.6);
   }
 
-  /* ---------- Services ---------- */
-  .services {
-    padding-block: var(--space-9);
+  /* ---------- Hero shelf (signature visual) ---------- */
+  .shelf-wrap { position: relative; display: flex; justify-content: center; }
+  .shelf {
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+    height: clamp(180px, 24vw, 260px);
   }
+  .spine {
+    width: clamp(24px, 3.4vw, 38px);
+    border-radius: 5px 5px 2px 2px;
+    box-shadow: inset -5px 0 0 rgba(0, 0, 0, 0.18), 0 14px 26px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
+    animation: floatSpine 5s ease-in-out infinite;
+  }
+  .spine::before {
+    content: "";
+    position: absolute;
+    top: 16%;
+    left: 22%;
+    right: 22%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.35);
+  }
+  .spine:hover { transform: translateY(-16px) rotate(-1deg); filter: brightness(1.12); }
+  .spine:nth-child(1) { height: 62%; background: var(--color-lime); animation-delay: 0s; }
+  .spine:nth-child(2) { height: 88%; background: #3a4150; animation-delay: 0.4s; }
+  .spine:nth-child(3) { height: 74%; background: var(--color-off-white); animation-delay: 0.8s; }
+  .spine:nth-child(4) { height: 100%; background: #8fb020; animation-delay: 1.2s; }
+  .spine:nth-child(5) { height: 68%; background: #2b303a; animation-delay: 1.6s; }
+  .spine:nth-child(6) { height: 82%; background: var(--color-lime); animation-delay: 2s; }
+  .spine:nth-child(7) { height: 58%; background: #3a4150; animation-delay: 2.4s; }
+  @keyframes floatSpine {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .shelf-base {
+    position: absolute;
+    left: -6%;
+    right: -6%;
+    bottom: -14px;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-lime), transparent);
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+
+  /* ---------- Section heads ---------- */
   .section-head {
     max-width: 46ch;
     margin-bottom: var(--space-7);
   }
   .section-head h2 {
-    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    font-weight: 600;
   }
+  .section-head p { margin-top: var(--space-3); color: var(--color-grey); }
+
+  /* ---------- Lead magnet / roadmap ---------- */
+  .roadmap {
+    padding-block: var(--space-9);
+    background: linear-gradient(180deg, #f2f5df 0%, var(--color-paper) 100%);
+  }
+  .roadmap-inner {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .book-mock-wrap { display: flex; justify-content: center; perspective: 1200px; }
+  .book-mock {
+    width: min(280px, 80%);
+    aspect-ratio: 3 / 4.3;
+    border-radius: 4px 10px 10px 4px;
+    background: linear-gradient(135deg, var(--color-ink) 0%, #262b34 100%);
+    box-shadow: -10px 0 0 rgba(0,0,0,0.25), 0 30px 60px rgba(20, 23, 28, 0.35);
+    padding: var(--space-6) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-off-white);
+    transform: rotate(-4deg);
+    animation: floatBook 6s ease-in-out infinite;
+    position: relative;
+  }
+  .book-mock::before {
+    content: "";
+    position: absolute;
+    inset-block: 10%;
+    left: 10px;
+    width: 3px;
+    background: var(--color-lime);
+    border-radius: 2px;
+  }
+  @keyframes floatBook {
+    0%, 100% { transform: rotate(-4deg) translateY(0); }
+    50% { transform: rotate(-4deg) translateY(-10px); }
+  }
+  .book-mock .book-eyebrow { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-lime); font-weight: 700; }
+  .book-mock h3 { font-size: 1.7rem; margin-top: var(--space-3); line-height: 1.1; }
+  .book-mock .book-sub { margin-top: var(--space-2); font-size: 0.92rem; color: rgba(250, 249, 246, 0.65); }
+  .book-mock .book-imprint { font-size: 0.78rem; color: rgba(250, 249, 246, 0.5); }
+
+  .roadmap-list { margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+  .roadmap-list li { display: flex; gap: var(--space-3); align-items: flex-start; font-size: 0.98rem; }
+  .roadmap-list .check-icon {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--color-ink);
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .roadmap-list .check-icon svg { width: 12px; height: 12px; stroke: var(--color-lime); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  .roadmap-form-card {
+    margin-top: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid rgba(20, 23, 28, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+  }
+  .roadmap-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-3); }
+  .roadmap-trust { margin-top: var(--space-3); font-size: 0.8rem; color: var(--color-grey); }
+
+  /* ---------- Services ---------- */
+  .services { padding-block: var(--space-9); background: var(--color-white); }
 
   .services-grid {
     display: grid;
@@ -291,52 +502,115 @@
 
   .service-card {
     padding: var(--space-5);
-    border: 1px solid rgba(15, 17, 21, 0.1);
+    border: 1px solid rgba(20, 23, 28, 0.1);
     border-radius: var(--radius-md);
-    background: #fff;
+    background: var(--color-paper);
     transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    position: relative;
   }
   .service-card:hover {
     transform: translateY(-6px);
-    border-color: var(--color-accent);
-    box-shadow: 0 16px 40px rgba(15, 17, 21, 0.08);
+    border-color: var(--color-lime);
+    box-shadow: 0 16px 40px rgba(20, 23, 28, 0.1);
+  }
+  .service-number {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(20, 23, 28, 0.25);
   }
   .service-icon {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: var(--radius-sm);
-    background: rgba(255, 77, 46, 0.1);
+    background: var(--color-ink);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--space-4);
   }
   .service-icon svg {
-    width: 24px;
-    height: 24px;
-    stroke: var(--color-accent);
+    width: 22px;
+    height: 22px;
+    stroke: var(--color-lime);
     fill: none;
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
   .service-card h3 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: var(--space-2);
   }
   .service-card p {
     color: var(--color-grey);
-    font-size: 0.95rem;
+    font-size: 0.93rem;
   }
 
-  /* ---------- Testimonials ---------- */
-  .testimonials {
+  /* ---------- Process timeline ---------- */
+  .process {
     padding-block: var(--space-9);
     background: var(--color-ink);
     color: var(--color-off-white);
   }
-  .testimonials .section-head h2 { color: var(--color-off-white); }
-  .testimonials .section-head p { color: rgba(250, 249, 246, 0.6); }
+  .process .section-head h2 { color: var(--color-off-white); }
+  .process .section-head p { color: rgba(250, 249, 246, 0.6); }
+
+  .timeline { position: relative; max-width: 760px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-lime), rgba(198, 241, 53, 0.08));
+  }
+  .timeline-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: var(--space-4);
+    padding-bottom: var(--space-6);
+  }
+  .timeline-step:last-child { padding-bottom: 0; }
+  .step-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-ink-soft);
+    border: 1.5px solid var(--color-lime);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-lime);
+    z-index: 1;
+  }
+  .step-content h3 { font-size: 1.15rem; font-weight: 600; }
+  .step-content .step-time {
+    display: inline-block;
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-2);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-lime);
+    font-weight: 600;
+  }
+  .step-content p { color: rgba(250, 249, 246, 0.65); font-size: 0.95rem; max-width: 52ch; }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials {
+    padding-block: var(--space-9);
+    background: var(--color-white);
+  }
 
   .testimonial-grid {
     display: grid;
@@ -345,8 +619,8 @@
   }
 
   .testimonial-card {
-    background: rgba(250, 249, 246, 0.04);
-    border: 1px solid rgba(250, 249, 246, 0.1);
+    background: var(--color-paper);
+    border: 1px solid rgba(20, 23, 28, 0.08);
     border-radius: var(--radius-md);
     padding: var(--space-5);
     display: flex;
@@ -355,12 +629,12 @@
   }
 
   .stars { display: flex; gap: 4px; }
-  .stars svg { width: 16px; height: 16px; fill: var(--color-accent); }
+  .stars svg { width: 16px; height: 16px; fill: var(--color-lime-text); }
 
   .testimonial-quote {
     font-size: 1.02rem;
     line-height: 1.6;
-    color: rgba(250, 249, 246, 0.9);
+    color: var(--color-ink);
   }
 
   .testimonial-person {
@@ -373,8 +647,8 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(255, 77, 46, 0.18);
-    color: var(--color-accent);
+    background: var(--color-ink);
+    color: var(--color-lime);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -384,31 +658,38 @@
     flex-shrink: 0;
   }
   .person-name { font-weight: 600; font-size: 0.95rem; }
-  .person-role { font-size: 0.82rem; color: rgba(250, 249, 246, 0.55); }
+  .person-role { font-size: 0.82rem; color: var(--color-grey); }
 
   .carousel-dots {
     display: none;
     justify-content: center;
-    gap: var(--space-2);
+    gap: var(--space-3);
     margin-top: var(--space-5);
   }
   .carousel-dots button {
+    position: relative;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(250, 249, 246, 0.25);
+    background: rgba(20, 23, 28, 0.2);
     border: none;
     padding: 0;
     transition: background-color 0.25s ease, transform 0.25s ease;
   }
+  .carousel-dots button::after {
+    content: "";
+    position: absolute;
+    inset: -16px;
+  }
   .carousel-dots button.is-active {
-    background: var(--color-accent);
+    background: var(--color-lime-text);
     transform: scale(1.25);
   }
 
   /* ---------- Contact form ---------- */
   .contact {
     padding-block: var(--space-9);
+    background: var(--color-paper);
   }
 
   .contact-inner {
@@ -418,7 +699,7 @@
     align-items: start;
   }
 
-  .contact-copy h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); }
+  .contact-copy h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 600; }
   .contact-copy p { margin-top: var(--space-3); color: var(--color-grey); max-width: 42ch; }
 
   .contact-fact {
@@ -431,8 +712,8 @@
   }
 
   form#enquiry-form {
-    background: #fff;
-    border: 1px solid rgba(15, 17, 21, 0.1);
+    background: var(--color-white);
+    border: 1px solid rgba(20, 23, 28, 0.1);
     border-radius: var(--radius-md);
     padding: var(--space-6);
   }
@@ -453,15 +734,15 @@
     font-weight: 600;
     margin-bottom: var(--space-2);
   }
-  .field .required-mark { color: var(--color-accent); }
+  .field .required-mark { color: var(--color-lime-text); }
 
   .field input,
   .field select,
   .field textarea {
     padding: 0.8rem 1rem;
-    border: 1.5px solid rgba(15, 17, 21, 0.15);
+    border: 1.5px solid rgba(20, 23, 28, 0.15);
     border-radius: var(--radius-sm);
-    background: var(--color-off-white);
+    background: var(--color-paper);
     font-size: 0.95rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
@@ -469,8 +750,8 @@
   .field select:focus,
   .field textarea:focus {
     outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(255, 77, 46, 0.15);
+    border-color: var(--color-lime-text);
+    box-shadow: 0 0 0 3px rgba(198, 241, 53, 0.25);
   }
   .field textarea { min-height: 120px; resize: vertical; }
 
@@ -493,7 +774,7 @@
     align-items: flex-start;
     gap: var(--space-2);
   }
-  .field-checkbox input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--color-accent); }
+  .field-checkbox input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--color-lime-text); }
   .field-checkbox label { margin-bottom: 0; font-weight: 500; font-size: 0.88rem; }
 
   .submit-btn {
@@ -505,8 +786,8 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 2px solid rgba(250, 249, 246, 0.4);
-    border-top-color: #fff;
+    border: 2px solid rgba(20, 23, 28, 0.3);
+    border-top-color: var(--color-ink);
     animation: spin 0.7s linear infinite;
     display: none;
   }
@@ -521,14 +802,14 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba(255, 77, 46, 0.12);
+    background: var(--color-ink);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto var(--space-4);
   }
-  .success-panel .icon-check svg { width: 26px; height: 26px; stroke: var(--color-accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .success-panel h3 { font-size: 1.4rem; margin-bottom: var(--space-2); }
+  .success-panel .icon-check svg { width: 26px; height: 26px; stroke: var(--color-lime); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .success-panel h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: var(--space-2); }
   .success-panel p { color: var(--color-grey); }
 
   /* ---------- Footer ---------- */
@@ -545,18 +826,21 @@
     border-bottom: 1px solid rgba(250, 249, 246, 0.08);
   }
   .footer-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     color: var(--color-off-white);
   }
-  .footer-logo span { color: var(--color-accent); }
+  .footer-logo .logo-mark { color: var(--color-lime); }
   .footer-blurb { margin-top: var(--space-3); max-width: 32ch; font-size: 0.92rem; }
 
   .social-links { display: flex; gap: var(--space-3); margin-top: var(--space-5); }
   .social-links a {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1px solid rgba(250, 249, 246, 0.18);
     display: flex;
@@ -564,7 +848,7 @@
     justify-content: center;
     transition: border-color 0.2s ease, background-color 0.2s ease;
   }
-  .social-links a:hover { border-color: var(--color-accent); background: rgba(255, 77, 46, 0.1); }
+  .social-links a:hover { border-color: var(--color-lime); background: rgba(198, 241, 53, 0.1); }
   .social-links svg { width: 16px; height: 16px; stroke: var(--color-off-white); fill: none; stroke-width: 1.8; stroke-linecap: round; }
 
   .footer-col h4 {
@@ -576,7 +860,7 @@
     margin-bottom: var(--space-4);
   }
   .footer-col ul li { margin-bottom: var(--space-3); font-size: 0.92rem; }
-  .footer-col ul li a:hover { color: var(--color-accent); }
+  .footer-col ul li a:hover { color: var(--color-lime); }
   address { font-style: normal; }
 
   .footer-bottom {
@@ -604,11 +888,19 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .hero::before { animation: none; }
+    .spine, .book-mock { animation: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .btn:hover { transform: none; }
   }
 
   /* ---------- Responsive ---------- */
+  @media (max-width: 1000px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .shelf-wrap { margin-top: var(--space-6); justify-content: flex-start; }
+    .roadmap-inner { grid-template-columns: 1fr; }
+    .book-mock-wrap { order: -1; margin-bottom: var(--space-3); }
+  }
+
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-inner { grid-template-columns: 1fr; }
@@ -625,7 +917,7 @@
       justify-content: center;
       align-items: center;
       gap: var(--space-6);
-      background: rgba(15, 17, 21, 0.98);
+      background: var(--color-ink);
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
@@ -639,6 +931,8 @@
     .nav-links a:not(.btn) { font-size: 1.1rem; }
 
     .hero-stats { grid-template-columns: 1fr; gap: var(--space-4); }
+
+    .roadmap-form-row { grid-template-columns: 1fr; }
 
     .testimonial-grid {
       display: flex;
@@ -663,20 +957,27 @@
     .container { padding-inline: var(--space-4); }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .services-grid { grid-template-columns: 1fr; }
+    .roadmap-form-card { padding: var(--space-4); }
   }
 </style>
 </head>
 <body>
 
+<a href="#top" class="skip-link">Skip to content</a>
+
 <header class="site-header" id="site-header">
   <div class="container nav-inner">
-    <a href="#top" class="logo">Pulse <span>&amp;</span> Co.</a>
+    <a href="#top" class="logo">
+      <span><span class="logo-mark">Mind</span>luma</span>
+      <span class="logo-sub">Collective</span>
+    </a>
 
     <nav class="nav-links" id="nav-links">
-      <a href="#work">Work</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#roadmap">Free Roadmap</a>
       <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-primary btn-sm">Let's Talk</a>
+      <a href="#contact" class="btn btn-primary btn-sm">Start Your Book</a>
     </nav>
 
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
@@ -690,71 +991,196 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="container hero-content">
-      <h1 class="reveal">We build brands people actually remember.</h1>
-      <p class="lede reveal">Pulse &amp; Co. is a full-service marketing and advertising agency for brands that refuse to blend in. Strategy, creative, and media — built to move real numbers.</p>
+      <div>
+        <h1 class="reveal">Turn your manuscript into a book people <em>actually</em> buy.</h1>
+        <p class="lede reveal">Mindluma Collective is an author-services collective for independent writers — editorial, design, and launch support that gets your book onto shelves and bestseller lists, with you keeping 100% of your rights and royalties.</p>
 
-      <div class="hero-ctas reveal">
-        <a href="#contact" class="btn btn-primary">Start a Project</a>
-        <a href="#work" class="btn btn-ghost">See Our Work</a>
+        <div class="hero-ctas reveal">
+          <a href="#roadmap" class="btn btn-primary">Get the Free Roadmap</a>
+          <a href="#process" class="btn btn-ghost">See How It Works</a>
+        </div>
+
+        <div class="hero-stats" id="hero-stats">
+          <div class="stat">
+            <div class="stat-number" data-target="340" data-suffix="+">0</div>
+            <div class="stat-label">Books published</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-target="210" data-suffix="+">0</div>
+            <div class="stat-label">Authors served</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-target="4.9" data-decimals="1" data-suffix="/5">0</div>
+            <div class="stat-label">Author rating</div>
+          </div>
+        </div>
       </div>
 
-      <div class="hero-stats" id="hero-stats">
-        <div class="stat">
-          <div class="stat-number" data-target="250" data-suffix="+">0</div>
-          <div class="stat-label">Campaigns launched</div>
+      <div class="shelf-wrap reveal" aria-hidden="true">
+        <div class="shelf">
+          <div class="spine"></div>
+          <div class="spine"></div>
+          <div class="spine"></div>
+          <div class="spine"></div>
+          <div class="spine"></div>
+          <div class="spine"></div>
+          <div class="spine"></div>
+          <div class="shelf-base"></div>
         </div>
-        <div class="stat">
-          <div class="stat-number" data-target="120" data-suffix="+">0</div>
-          <div class="stat-label">Brands served</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead magnet / Roadmap -->
+  <section class="roadmap" id="roadmap">
+    <div class="container roadmap-inner">
+      <div class="book-mock-wrap reveal">
+        <div class="book-mock">
+          <div>
+            <div class="book-eyebrow">Free Guide</div>
+            <h3>The Roadmap</h3>
+            <p class="book-sub">Manuscript &rarr; Market in 10 Steps</p>
+          </div>
+          <div class="book-imprint">A Mindluma Collective Guide</div>
         </div>
-        <div class="stat">
-          <div class="stat-number" data-target="4.9" data-decimals="1" data-suffix="/5">0</div>
-          <div class="stat-label">Client rating</div>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">Free resource</span>
+        <h2>Get the Manuscript-to-Market Roadmap.</h2>
+        <p style="margin-top: var(--space-3); color: var(--color-grey); max-width: 48ch;">The exact 10-step checklist we use with every author we take on — from final draft to launch day. No fluff, no upsells, just the path.</p>
+
+        <ul class="roadmap-list">
+          <li><span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span> The 4 edits every manuscript needs before design starts</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span> A cover brief template that actually gets you a cover you love</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span> A retailer-by-retailer formatting checklist (Amazon, IngramSpark, Apple Books)</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span> A 6-week launch timeline you can copy for your own book</li>
+        </ul>
+
+        <div class="roadmap-form-card">
+          <form id="roadmap-form" novalidate>
+            <div id="roadmap-form-fields">
+              <div class="roadmap-form-row">
+                <div class="field">
+                  <label for="rmFirstName">First Name <span class="required-mark">*</span></label>
+                  <input type="text" id="rmFirstName" name="rmFirstName" aria-describedby="rmFirstName-error" />
+                  <p class="error-message" id="rmFirstName-error" role="alert"></p>
+                </div>
+                <div class="field">
+                  <label for="rmEmail">Email <span class="required-mark">*</span></label>
+                  <input type="email" id="rmEmail" name="rmEmail" aria-describedby="rmEmail-error" />
+                  <p class="error-message" id="rmEmail-error" role="alert"></p>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block submit-btn" id="roadmap-submit-btn">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="btn-label">Send Me the Roadmap</span>
+              </button>
+              <p class="roadmap-trust">Free forever. One email, no spam, unsubscribe anytime.</p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Services -->
-  <section class="services" id="work">
+  <section class="services" id="services">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">What we do</span>
-        <h2>Four disciplines. One growth engine.</h2>
+        <h2>Four disciplines. One published book.</h2>
       </div>
 
       <div class="services-grid">
         <article class="service-card reveal">
+          <span class="service-number">01</span>
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
           </div>
-          <h3>Brand Strategy</h3>
-          <p>Positioning and narrative that give your brand a reason to be remembered.</p>
+          <h3>Developmental &amp; Line Editing</h3>
+          <p>Structure, voice, and flow — sharpened by editors who read your genre for fun.</p>
         </article>
 
         <article class="service-card reveal">
+          <span class="service-number">02</span>
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9v6h3l7 4V5L6 9H3z"></path><path d="M14 8a4 4 0 0 1 0 8"></path><path d="M18 5a8 8 0 0 1 0 14"></path></svg>
+            <svg viewBox="0 0 24 24"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.07"></path><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"></path></svg>
           </div>
-          <h3>Digital Advertising</h3>
-          <p>Paid media across search, social, and programmatic that's built to convert.</p>
+          <h3>Cover &amp; Interior Design</h3>
+          <p>Cover art and interior layout that make readers stop scrolling and start buying.</p>
         </article>
 
         <article class="service-card reveal">
+          <span class="service-number">03</span>
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V5z"></path><circle cx="8" cy="9.5" r="1" fill="currentColor" stroke="none"></circle><circle cx="12" cy="9.5" r="1" fill="currentColor" stroke="none"></circle><circle cx="16" cy="9.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+            <svg viewBox="0 0 24 24"><path d="M2 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"></path><path d="M22 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"></path></svg>
           </div>
-          <h3>Content &amp; Social</h3>
-          <p>Editorial calendars and creative that make your audience stop scrolling.</p>
+          <h3>Formatting &amp; Distribution</h3>
+          <p>Print, ebook, and audiobook formats pushed live on Amazon, IngramSpark, and beyond.</p>
         </article>
 
         <article class="service-card reveal">
+          <span class="service-number">04</span>
           <div class="service-icon">
             <svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg>
           </div>
-          <h3>Performance Marketing</h3>
-          <p>Full-funnel measurement and optimization tied directly to revenue.</p>
+          <h3>Launch &amp; Marketing</h3>
+          <p>ARC campaigns, ad management, and a launch plan to get your book in front of real readers.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow on-dark">How it works</span>
+        <h2>From first draft to launch day.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step reveal">
+          <div class="step-badge">01</div>
+          <div class="step-content">
+            <h3>Discovery Call</h3>
+            <span class="step-time">Week 0</span>
+            <p>We learn your manuscript, genre, and goals in a free 30-minute consult.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-badge">02</div>
+          <div class="step-content">
+            <h3>Developmental Edit</h3>
+            <span class="step-time">Weeks 1–4</span>
+            <p>Structural and line edits to sharpen your story before design begins.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-badge">03</div>
+          <div class="step-content">
+            <h3>Cover &amp; Interior Design</h3>
+            <span class="step-time">Weeks 5–7</span>
+            <p>Custom cover concepts and print-ready interior layout, refined with your feedback.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-badge">04</div>
+          <div class="step-content">
+            <h3>Format &amp; Publish</h3>
+            <span class="step-time">Week 8</span>
+            <p>Ebook, print, and audiobook formats pushed live across every major retailer.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-badge">05</div>
+          <div class="step-content">
+            <h3>Launch &amp; Grow</h3>
+            <span class="step-time">Week 9+</span>
+            <p>ARC campaigns, ad management, and royalty tracking to keep sales moving after launch.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -763,7 +1189,7 @@
   <section class="testimonials" id="testimonials">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Client results</span>
+        <span class="eyebrow">Author results</span>
         <h2>Don't take our word for it.</h2>
       </div>
 
@@ -776,12 +1202,12 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
           </div>
-          <p class="testimonial-quote">"Pulse &amp; Co. rebuilt our paid social funnel from scratch — cut our CPA by 38% in one quarter while we scaled spend 2x alongside it."</p>
+          <p class="testimonial-quote">"Mindluma took my messy 400-page draft and turned it into a book I'm actually proud to put my name on. My editor understood exactly what I was trying to say — even when I didn't."</p>
           <div class="testimonial-person">
-            <div class="avatar">MC</div>
+            <div class="avatar">EM</div>
             <div>
-              <div class="person-name">Maya Chen</div>
-              <div class="person-role">Head of Growth, Northwind Outfitters</div>
+              <div class="person-name">Elena Marsh</div>
+              <div class="person-role">Debut Novelist, "The Quiet Coast"</div>
             </div>
           </div>
         </article>
@@ -794,12 +1220,12 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
           </div>
-          <p class="testimonial-quote">"They repositioned our brand ahead of a Series B raise. Investors specifically called out the new narrative on the term sheet call."</p>
+          <p class="testimonial-quote">"I self-published two books before Mindluma and neither looked like this. The cover alone doubled my click-through rate on ads."</p>
           <div class="testimonial-person">
-            <div class="avatar">DO</div>
+            <div class="avatar">JB</div>
             <div>
-              <div class="person-name">Daniel Osei</div>
-              <div class="person-role">CEO, Anchor Robotics</div>
+              <div class="person-name">Jordan Blake</div>
+              <div class="person-role">Indie Fantasy Author, Ashfall Trilogy</div>
             </div>
           </div>
         </article>
@@ -812,12 +1238,12 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
           </div>
-          <p class="testimonial-quote">"Six months in, organic engagement is up 4x and our content finally sounds like us instead of a stock template."</p>
+          <p class="testimonial-quote">"They handled formatting, distribution, and the ARC campaign while I focused on writing the sequel. First month sales beat my whole first year going solo."</p>
           <div class="testimonial-person">
-            <div class="avatar">PR</div>
+            <div class="avatar">PN</div>
             <div>
-              <div class="person-name">Priya Raman</div>
-              <div class="person-role">Marketing Director, Verve Skincare</div>
+              <div class="person-name">Priya Nair</div>
+              <div class="person-role">Memoirist, "Salt &amp; Certainty"</div>
             </div>
           </div>
         </article>
@@ -835,10 +1261,10 @@
   <section class="contact" id="contact">
     <div class="container contact-inner">
       <div class="contact-copy reveal">
-        <span class="eyebrow">Get in touch</span>
-        <h2>Tell us where you want to go.</h2>
-        <p>Share a few details about your project and a strategist will get back to you within one business day — no automated sales funnel, just a real conversation.</p>
-        <div class="contact-fact">Prefer email? Reach us directly at hello@pulseandco.agency</div>
+        <span class="eyebrow">Let's talk about your book</span>
+        <h2>Tell us where your manuscript stands.</h2>
+        <p>Share a few details and an editor will get back to you within one business day — real feedback, not a form letter.</p>
+        <div class="contact-fact">Prefer email? Reach us directly at hello@mindlumacollective.com</div>
       </div>
 
       <div class="reveal">
@@ -860,36 +1286,31 @@
 
             <div class="form-row">
               <div class="field">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" />
+                <label for="stage">Manuscript Stage</label>
+                <select id="stage" name="stage">
+                  <option value="">Select a stage</option>
+                  <option value="idea">Idea / outline only</option>
+                  <option value="drafting">First draft in progress</option>
+                  <option value="complete">Complete draft</option>
+                  <option value="published">Previously self-published</option>
+                </select>
               </div>
 
               <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" />
+                <label for="genre">Genre</label>
+                <input type="text" id="genre" name="genre" placeholder="e.g. Literary fiction" />
               </div>
             </div>
 
             <div class="field">
-              <label for="budget">Budget</label>
-              <select id="budget" name="budget">
-                <option value="">Select a range</option>
-                <option value="<5k">Less than $5k</option>
-                <option value="5k-20k">$5k – $20k</option>
-                <option value="20k-50k">$20k – $50k</option>
-                <option value="50k+">$50k+</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="details">Project Details <span class="required-mark">*</span></label>
+              <label for="details">Tell Us About Your Book <span class="required-mark">*</span></label>
               <textarea id="details" name="details" aria-describedby="details-error"></textarea>
               <p class="error-message" id="details-error" role="alert"></p>
             </div>
 
             <div class="field field-checkbox">
               <input type="checkbox" id="consent" name="consent" />
-              <label for="consent">I agree to be contacted by Pulse &amp; Co. about my enquiry.</label>
+              <label for="consent">I agree to be contacted by Mindluma Collective about my enquiry.</label>
             </div>
           </div>
 
@@ -908,8 +1329,8 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">Pulse <span>&amp;</span> Co.</div>
-        <p class="footer-blurb">A marketing and advertising studio for brands that want to be felt, not just seen.</p>
+        <div class="footer-logo"><span class="logo-mark">Mind</span>luma Collective</div>
+        <p class="footer-blurb">An author-services collective helping independent writers edit, design, and launch books that sell — while they keep their rights.</p>
         <div class="social-links">
           <a href="#" aria-label="Follow us on X">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
@@ -926,7 +1347,9 @@
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#roadmap">Free Roadmap</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -936,8 +1359,8 @@
         <h4>Contact</h4>
         <address>
           <ul>
-            <li>142 Harbour Street, Suite 4B, Brooklyn, NY 11201</li>
-            <li><a href="mailto:hello@pulseandco.agency">hello@pulseandco.agency</a></li>
+            <li>118 Ludlow Street, Suite 3, New York, NY 10002</li>
+            <li><a href="mailto:hello@mindlumacollective.com">hello@mindlumacollective.com</a></li>
             <li><a href="tel:+12125550148">+1 (212) 555-0148</a></li>
           </ul>
         </address>
@@ -1083,18 +1506,7 @@
       { passive: true }
     );
 
-    /* ---------------- Enquiry form validation & submit ---------------- */
-    var form = document.getElementById("enquiry-form");
-    var submitBtn = document.getElementById("submit-btn");
-    var btnLabel = submitBtn.querySelector(".btn-label");
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    var requiredFields = [
-      { input: document.getElementById("fullName"), errorEl: document.getElementById("fullName-error"), message: "Please enter your full name." },
-      { input: document.getElementById("email"), errorEl: document.getElementById("email-error"), message: "Please enter a valid email address." },
-      { input: document.getElementById("details"), errorEl: document.getElementById("details-error"), message: "Please tell us a bit about your project." }
-    ];
-
+    /* ---------------- Shared field error helpers ---------------- */
     function showFieldError(field) {
       field.input.classList.add("is-invalid");
       field.input.setAttribute("aria-invalid", "true");
@@ -1108,6 +1520,86 @@
       field.errorEl.textContent = "";
       field.errorEl.classList.remove("is-visible");
     }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    /* ---------------- Roadmap (lead magnet) form ---------------- */
+    var roadmapForm = document.getElementById("roadmap-form");
+    var roadmapSubmitBtn = document.getElementById("roadmap-submit-btn");
+    var roadmapBtnLabel = roadmapSubmitBtn.querySelector(".btn-label");
+
+    var roadmapFields = [
+      { input: document.getElementById("rmFirstName"), errorEl: document.getElementById("rmFirstName-error"), message: "Please enter your first name." },
+      { input: document.getElementById("rmEmail"), errorEl: document.getElementById("rmEmail-error"), message: "Please enter a valid email address." }
+    ];
+
+    roadmapFields.forEach(function (field) {
+      field.input.addEventListener("input", function () { clearFieldError(field); });
+    });
+
+    roadmapForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      roadmapFields.forEach(clearFieldError);
+
+      var firstInvalid = null;
+      roadmapFields.forEach(function (field) {
+        var value = field.input.value.trim();
+        var isEmpty = value === "";
+        var isBadEmail = field.input.id === "rmEmail" && value !== "" && !emailPattern.test(value);
+        if (isEmpty || isBadEmail) {
+          showFieldError(field);
+          if (!firstInvalid) firstInvalid = field.input;
+        }
+      });
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      roadmapSubmitBtn.disabled = true;
+      roadmapSubmitBtn.classList.add("is-loading");
+      roadmapBtnLabel.textContent = "Sending…";
+
+      var firstName = document.getElementById("rmFirstName").value.trim();
+      var email = document.getElementById("rmEmail").value.trim();
+
+      setTimeout(function () {
+        console.log("Roadmap requested:", { firstName: firstName, email: email });
+
+        var wrapper = roadmapForm.parentElement;
+        var panel = document.createElement("div");
+        panel.className = "success-panel";
+
+        var iconWrap = document.createElement("div");
+        iconWrap.className = "icon-check";
+        iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+        var heading = document.createElement("h3");
+        heading.textContent = "You're in, " + firstName + " — check your inbox.";
+
+        var body = document.createElement("p");
+        body.textContent = "The roadmap is on its way to " + email + ".";
+
+        panel.appendChild(iconWrap);
+        panel.appendChild(heading);
+        panel.appendChild(body);
+
+        wrapper.innerHTML = "";
+        wrapper.appendChild(panel);
+      }, 1200);
+    });
+
+    /* ---------------- Enquiry form validation & submit ---------------- */
+    var form = document.getElementById("enquiry-form");
+    var submitBtn = document.getElementById("submit-btn");
+    var btnLabel = submitBtn.querySelector(".btn-label");
+
+    var requiredFields = [
+      { input: document.getElementById("fullName"), errorEl: document.getElementById("fullName-error"), message: "Please enter your full name." },
+      { input: document.getElementById("email"), errorEl: document.getElementById("email-error"), message: "Please enter a valid email address." },
+      { input: document.getElementById("details"), errorEl: document.getElementById("details-error"), message: "Please tell us a bit about your book." }
+    ];
 
     // Clear a field's error the moment the user starts correcting it.
     requiredFields.forEach(function (field) {
@@ -1150,9 +1642,8 @@
       var formData = {
         fullName: document.getElementById("fullName").value.trim(),
         email: document.getElementById("email").value.trim(),
-        company: document.getElementById("company").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        budget: document.getElementById("budget").value,
+        stage: document.getElementById("stage").value,
+        genre: document.getElementById("genre").value.trim(),
         details: document.getElementById("details").value.trim(),
         consent: document.getElementById("consent").checked
       };
@@ -1173,7 +1664,7 @@
         iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
         var heading = document.createElement("h3");
-        heading.textContent = "Thanks, " + firstName + " — we’ll be in touch within one business day.";
+        heading.textContent = "Thanks, " + firstName + " — an editor will be in touch within one business day.";
 
         var body = document.createElement("p");
         body.textContent = "Keep an eye on " + formData.email + " for a reply from our team.";
@@ -1191,7 +1682,7 @@
 
     /* ---------------- Footer year ---------------- */
     document.getElementById("copyright").textContent =
-      "© " + new Date().getFullYear() + " Pulse & Co. All rights reserved.";
+      "© " + new Date().getFullYear() + " Mindluma Collective. All rights reserved.";
   })();
 </script>
 
