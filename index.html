@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulse &amp; Co. — Ideas that move markets.</title>
+<meta name="description" content="Pulse & Co. is a marketing and advertising agency that builds brands people actually remember." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ---------- Reset ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body, h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+
+  /* ---------- Design tokens ---------- */
+  :root {
+    --color-ink: #0F1115;
+    --color-off-white: #FAF9F6;
+    --color-accent: #FF4D2E;
+    --color-grey: #8A8F98;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    --space-7: 4rem;
+    --space-8: 6rem;
+    --space-9: 8rem;
+
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    --max-width: 1200px;
+    --nav-height: 76px;
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-off-white);
+    color: var(--color-ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+  }
+
+  section { scroll-margin-top: var(--nav-height); }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1.5px solid transparent;
+    transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-off-white);
+  }
+  .btn-primary:hover { background: #ff6440; }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: rgba(250, 249, 246, 0.35);
+    color: var(--color-off-white);
+  }
+  .btn-ghost:hover { border-color: var(--color-off-white); background: rgba(250, 249, 246, 0.08); }
+
+  .btn-sm {
+    padding: 0.6rem 1.3rem;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- Nav ---------- */
+  .site-header {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    background: rgba(15, 17, 21, 0);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+  }
+  .site-header.is-scrolled {
+    background: rgba(15, 17, 21, 0.86);
+    border-bottom-color: rgba(250, 249, 246, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-off-white);
+    letter-spacing: -0.01em;
+  }
+  .logo span { color: var(--color-accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+  .nav-links a:not(.btn) {
+    color: rgba(250, 249, 246, 0.85);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:not(.btn):hover { color: var(--color-accent); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: var(--space-2);
+    z-index: 110;
+  }
+  .nav-toggle span,
+  .nav-toggle span::before,
+  .nav-toggle span::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-off-white);
+    position: relative;
+    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  }
+  .nav-toggle span::before,
+  .nav-toggle span::after { content: ""; position: absolute; left: 0; }
+  .nav-toggle span::before { top: -8px; }
+  .nav-toggle span::after { top: 8px; }
+  .nav-toggle[aria-expanded="true"] span { background: transparent; }
+  .nav-toggle[aria-expanded="true"] span::before { transform: translateY(8px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-8px) rotate(-45deg); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--color-ink);
+    color: var(--color-off-white);
+    padding-top: var(--nav-height);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: -25%;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(255, 77, 46, 0.28), transparent 45%),
+      radial-gradient(circle at 82% 75%, rgba(255, 77, 46, 0.16), transparent 50%),
+      linear-gradient(135deg, #0f1115 0%, #181c24 45%, #0f1115 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 20s ease-in-out infinite;
+    z-index: 0;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    z-index: 0;
+    pointer-events: none;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .hero-content { position: relative; z-index: 1; padding-block: var(--space-8); }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 700;
+    max-width: 16ch;
+  }
+
+  .hero p.lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    color: rgba(250, 249, 246, 0.72);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: var(--space-7);
+    margin-top: var(--space-8);
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+  .stat-label {
+    margin-top: var(--space-1);
+    font-size: 0.85rem;
+    color: rgba(250, 249, 246, 0.6);
+  }
+
+  /* ---------- Services ---------- */
+  .services {
+    padding-block: var(--space-9);
+  }
+  .section-head {
+    max-width: 46ch;
+    margin-bottom: var(--space-7);
+  }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+
+  .service-card {
+    padding: var(--space-5);
+    border: 1px solid rgba(15, 17, 21, 0.1);
+    border-radius: var(--radius-md);
+    background: #fff;
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-accent);
+    box-shadow: 0 16px 40px rgba(15, 17, 21, 0.08);
+  }
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 77, 46, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+  .service-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-accent);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-2);
+  }
+  .service-card p {
+    color: var(--color-grey);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials {
+    padding-block: var(--space-9);
+    background: var(--color-ink);
+    color: var(--color-off-white);
+  }
+  .testimonials .section-head h2 { color: var(--color-off-white); }
+  .testimonials .section-head p { color: rgba(250, 249, 246, 0.6); }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .testimonial-card {
+    background: rgba(250, 249, 246, 0.04);
+    border: 1px solid rgba(250, 249, 246, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .stars { display: flex; gap: 4px; }
+  .stars svg { width: 16px; height: 16px; fill: var(--color-accent); }
+
+  .testimonial-quote {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: rgba(250, 249, 246, 0.9);
+  }
+
+  .testimonial-person {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: auto;
+  }
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 77, 46, 0.18);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .person-name { font-weight: 600; font-size: 0.95rem; }
+  .person-role { font-size: 0.82rem; color: rgba(250, 249, 246, 0.55); }
+
+  .carousel-dots {
+    display: none;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+  }
+  .carousel-dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(250, 249, 246, 0.25);
+    border: none;
+    padding: 0;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+  .carousel-dots button.is-active {
+    background: var(--color-accent);
+    transform: scale(1.25);
+  }
+
+  /* ---------- Contact form ---------- */
+  .contact {
+    padding-block: var(--space-9);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .contact-copy h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); }
+  .contact-copy p { margin-top: var(--space-3); color: var(--color-grey); max-width: 42ch; }
+
+  .contact-fact {
+    margin-top: var(--space-6);
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--color-grey);
+  }
+
+  form#enquiry-form {
+    background: #fff;
+    border: 1px solid rgba(15, 17, 21, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .field {
+    margin-bottom: var(--space-4);
+    display: flex;
+    flex-direction: column;
+  }
+  .field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+  }
+  .field .required-mark { color: var(--color-accent); }
+
+  .field input,
+  .field select,
+  .field textarea {
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(15, 17, 21, 0.15);
+    border-radius: var(--radius-sm);
+    background: var(--color-off-white);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(255, 77, 46, 0.15);
+  }
+  .field textarea { min-height: 120px; resize: vertical; }
+
+  .field input.is-invalid,
+  .field select.is-invalid,
+  .field textarea.is-invalid {
+    border-color: #d92c2c;
+  }
+
+  .error-message {
+    display: none;
+    margin-top: var(--space-2);
+    font-size: 0.8rem;
+    color: #d92c2c;
+  }
+  .error-message.is-visible { display: block; }
+
+  .field-checkbox {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .field-checkbox input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--color-accent); }
+  .field-checkbox label { margin-bottom: 0; font-weight: 500; font-size: 0.88rem; }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: var(--space-2);
+    position: relative;
+  }
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(250, 249, 246, 0.4);
+    border-top-color: #fff;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  .submit-btn.is-loading .spinner { display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .success-panel {
+    text-align: center;
+    padding: var(--space-7) var(--space-4);
+  }
+  .success-panel .icon-check {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 77, 46, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+  }
+  .success-panel .icon-check svg { width: 26px; height: 26px; stroke: var(--color-accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .success-panel h3 { font-size: 1.4rem; margin-bottom: var(--space-2); }
+  .success-panel p { color: var(--color-grey); }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    background: var(--color-ink);
+    color: rgba(250, 249, 246, 0.75);
+    padding-top: var(--space-8);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: var(--space-6);
+    padding-bottom: var(--space-7);
+    border-bottom: 1px solid rgba(250, 249, 246, 0.08);
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--color-off-white);
+  }
+  .footer-logo span { color: var(--color-accent); }
+  .footer-blurb { margin-top: var(--space-3); max-width: 32ch; font-size: 0.92rem; }
+
+  .social-links { display: flex; gap: var(--space-3); margin-top: var(--space-5); }
+  .social-links a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 249, 246, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .social-links a:hover { border-color: var(--color-accent); background: rgba(255, 77, 46, 0.1); }
+  .social-links svg { width: 16px; height: 16px; stroke: var(--color-off-white); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+
+  .footer-col h4 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(250, 249, 246, 0.5);
+    margin-bottom: var(--space-4);
+  }
+  .footer-col ul li { margin-bottom: var(--space-3); font-size: 0.92rem; }
+  .footer-col ul li a:hover { color: var(--color-accent); }
+  address { font-style: normal; }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-5);
+    font-size: 0.8rem;
+    color: rgba(250, 249, 246, 0.45);
+  }
+  .footer-bottom .legal-links { display: flex; gap: var(--space-4); }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero::before { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-inner { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display: block; }
+    .nav-links {
+      position: fixed;
+      inset: 0;
+      top: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-6);
+      background: rgba(15, 17, 21, 0.98);
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+    }
+    .nav-links.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-links a:not(.btn) { font-size: 1.1rem; }
+
+    .hero-stats { grid-template-columns: 1fr; gap: var(--space-4); }
+
+    .testimonial-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: var(--space-4);
+      margin-inline: calc(var(--space-5) * -1);
+      padding-inline: var(--space-5);
+      padding-bottom: var(--space-2);
+      scrollbar-width: none;
+    }
+    .testimonial-grid::-webkit-scrollbar { display: none; }
+    .testimonial-card { min-width: 88%; scroll-snap-align: center; }
+    .carousel-dots { display: flex; }
+
+    .form-row { grid-template-columns: 1fr; }
+    form#enquiry-form { padding: var(--space-5); }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding-inline: var(--space-4); }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">Pulse <span>&amp;</span> Co.</a>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="#work">Work</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary btn-sm">Let's Talk</a>
+    </nav>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <h1 class="reveal">We build brands people actually remember.</h1>
+      <p class="lede reveal">Pulse &amp; Co. is a full-service marketing and advertising agency for brands that refuse to blend in. Strategy, creative, and media — built to move real numbers.</p>
+
+      <div class="hero-ctas reveal">
+        <a href="#contact" class="btn btn-primary">Start a Project</a>
+        <a href="#work" class="btn btn-ghost">See Our Work</a>
+      </div>
+
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat">
+          <div class="stat-number" data-target="250" data-suffix="+">0</div>
+          <div class="stat-label">Campaigns launched</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="120" data-suffix="+">0</div>
+          <div class="stat-label">Brands served</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="4.9" data-decimals="1" data-suffix="/5">0</div>
+          <div class="stat-label">Client rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Four disciplines. One growth engine.</h2>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+          </div>
+          <h3>Brand Strategy</h3>
+          <p>Positioning and narrative that give your brand a reason to be remembered.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9v6h3l7 4V5L6 9H3z"></path><path d="M14 8a4 4 0 0 1 0 8"></path><path d="M18 5a8 8 0 0 1 0 14"></path></svg>
+          </div>
+          <h3>Digital Advertising</h3>
+          <p>Paid media across search, social, and programmatic that's built to convert.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V5z"></path><circle cx="8" cy="9.5" r="1" fill="currentColor" stroke="none"></circle><circle cx="12" cy="9.5" r="1" fill="currentColor" stroke="none"></circle><circle cx="16" cy="9.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          </div>
+          <h3>Content &amp; Social</h3>
+          <p>Editorial calendars and creative that make your audience stop scrolling.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg>
+          </div>
+          <h3>Performance Marketing</h3>
+          <p>Full-funnel measurement and optimization tied directly to revenue.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Client results</span>
+        <h2>Don't take our word for it.</h2>
+      </div>
+
+      <div class="testimonial-grid" id="testimonial-grid">
+        <article class="testimonial-card reveal">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+          </div>
+          <p class="testimonial-quote">"Pulse &amp; Co. rebuilt our paid social funnel from scratch — cut our CPA by 38% in one quarter while we scaled spend 2x alongside it."</p>
+          <div class="testimonial-person">
+            <div class="avatar">MC</div>
+            <div>
+              <div class="person-name">Maya Chen</div>
+              <div class="person-role">Head of Growth, Northwind Outfitters</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card reveal">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+          </div>
+          <p class="testimonial-quote">"They repositioned our brand ahead of a Series B raise. Investors specifically called out the new narrative on the term sheet call."</p>
+          <div class="testimonial-person">
+            <div class="avatar">DO</div>
+            <div>
+              <div class="person-name">Daniel Osei</div>
+              <div class="person-role">CEO, Anchor Robotics</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card reveal">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"></polygon></svg>
+          </div>
+          <p class="testimonial-quote">"Six months in, organic engagement is up 4x and our content finally sounds like us instead of a stock template."</p>
+          <div class="testimonial-person">
+            <div class="avatar">PR</div>
+            <div>
+              <div class="person-name">Priya Raman</div>
+              <div class="person-role">Marketing Director, Verve Skincare</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="carousel-dots" id="carousel-dots">
+        <button type="button" aria-label="Go to testimonial 1" class="is-active"></button>
+        <button type="button" aria-label="Go to testimonial 2"></button>
+        <button type="button" aria-label="Go to testimonial 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Enquiry form -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-copy reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Tell us where you want to go.</h2>
+        <p>Share a few details about your project and a strategist will get back to you within one business day — no automated sales funnel, just a real conversation.</p>
+        <div class="contact-fact">Prefer email? Reach us directly at hello@pulseandco.agency</div>
+      </div>
+
+      <div class="reveal">
+        <form id="enquiry-form" novalidate>
+          <div id="form-fields">
+            <div class="form-row">
+              <div class="field">
+                <label for="fullName">Full Name <span class="required-mark">*</span></label>
+                <input type="text" id="fullName" name="fullName" aria-describedby="fullName-error" />
+                <p class="error-message" id="fullName-error" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label for="email">Email <span class="required-mark">*</span></label>
+                <input type="email" id="email" name="email" aria-describedby="email-error" />
+                <p class="error-message" id="email-error" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="budget">Budget</label>
+              <select id="budget" name="budget">
+                <option value="">Select a range</option>
+                <option value="<5k">Less than $5k</option>
+                <option value="5k-20k">$5k – $20k</option>
+                <option value="20k-50k">$20k – $50k</option>
+                <option value="50k+">$50k+</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="details">Project Details <span class="required-mark">*</span></label>
+              <textarea id="details" name="details" aria-describedby="details-error"></textarea>
+              <p class="error-message" id="details-error" role="alert"></p>
+            </div>
+
+            <div class="field field-checkbox">
+              <input type="checkbox" id="consent" name="consent" />
+              <label for="consent">I agree to be contacted by Pulse &amp; Co. about my enquiry.</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-label">Send Enquiry</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Pulse <span>&amp;</span> Co.</div>
+        <p class="footer-blurb">A marketing and advertising studio for brands that want to be felt, not just seen.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Follow us on X">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+          </a>
+          <a href="#" aria-label="Follow us on Instagram">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" aria-label="Follow us on LinkedIn">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="7" y1="10" x2="7" y2="17"></line><circle cx="7" cy="7" r="0.6" fill="currentColor" stroke="none"></circle><line x1="12" y1="12" x2="12" y2="17"></line><path d="M12 13.5a2.5 2.5 0 0 1 5 0V17"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+          <ul>
+            <li>142 Harbour Street, Suite 4B, Brooklyn, NY 11201</li>
+            <li><a href="mailto:hello@pulseandco.agency">hello@pulseandco.agency</a></li>
+            <li><a href="tel:+12125550148">+1 (212) 555-0148</a></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span id="copyright"></span>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    "use strict";
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---------------- Sticky nav ---------------- */
+    var header = document.getElementById("site-header");
+    function onScroll() {
+      header.classList.toggle("is-scrolled", window.scrollY > 80);
+    }
+    document.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    /* ---------------- Mobile hamburger ---------------- */
+    var navToggle = document.getElementById("nav-toggle");
+    var navLinks = document.getElementById("nav-links");
+
+    navToggle.addEventListener("click", function () {
+      var isOpen = navLinks.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* ---------------- Scroll-reveal animations ---------------- */
+    var revealEls = document.querySelectorAll(".reveal");
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+    } else {
+      var revealObserver = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      revealEls.forEach(function (el) { revealObserver.observe(el); });
+    }
+
+    /* ---------------- Hero stat counters ---------------- */
+    function animateStat(el) {
+      var target = parseFloat(el.dataset.target);
+      var decimals = el.dataset.decimals ? parseInt(el.dataset.decimals, 10) : 0;
+      var suffix = el.dataset.suffix || "";
+
+      if (prefersReducedMotion) {
+        el.textContent = target.toFixed(decimals) + suffix;
+        return;
+      }
+
+      var duration = 1500;
+      var start = null;
+
+      function step(timestamp) {
+        if (start === null) start = timestamp;
+        var progress = Math.min((timestamp - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = target * eased;
+        el.textContent = current.toFixed(decimals) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target.toFixed(decimals) + suffix;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    var heroStats = document.getElementById("hero-stats");
+    var statEls = heroStats.querySelectorAll(".stat-number");
+    var statsAnimated = false;
+
+    if ("IntersectionObserver" in window) {
+      var statsObserver = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !statsAnimated) {
+              statsAnimated = true;
+              statEls.forEach(animateStat);
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      statsObserver.observe(heroStats);
+    } else {
+      statEls.forEach(animateStat);
+    }
+
+    /* ---------------- Testimonial carousel dots (mobile) ---------------- */
+    var track = document.getElementById("testimonial-grid");
+    var dotsWrap = document.getElementById("carousel-dots");
+    var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll("button"));
+    var cards = Array.prototype.slice.call(track.querySelectorAll(".testimonial-card"));
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        var target = cards[i];
+        track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: prefersReducedMotion ? "auto" : "smooth" });
+      });
+    });
+
+    var scrollTicking = false;
+    track.addEventListener(
+      "scroll",
+      function () {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+          var index = Math.round(track.scrollLeft / track.clientWidth);
+          index = Math.max(0, Math.min(index, dots.length - 1));
+          dots.forEach(function (d, i) { d.classList.toggle("is-active", i === index); });
+          scrollTicking = false;
+        });
+      },
+      { passive: true }
+    );
+
+    /* ---------------- Enquiry form validation & submit ---------------- */
+    var form = document.getElementById("enquiry-form");
+    var submitBtn = document.getElementById("submit-btn");
+    var btnLabel = submitBtn.querySelector(".btn-label");
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    var requiredFields = [
+      { input: document.getElementById("fullName"), errorEl: document.getElementById("fullName-error"), message: "Please enter your full name." },
+      { input: document.getElementById("email"), errorEl: document.getElementById("email-error"), message: "Please enter a valid email address." },
+      { input: document.getElementById("details"), errorEl: document.getElementById("details-error"), message: "Please tell us a bit about your project." }
+    ];
+
+    function showFieldError(field) {
+      field.input.classList.add("is-invalid");
+      field.input.setAttribute("aria-invalid", "true");
+      field.errorEl.textContent = field.message;
+      field.errorEl.classList.add("is-visible");
+    }
+
+    function clearFieldError(field) {
+      field.input.classList.remove("is-invalid");
+      field.input.removeAttribute("aria-invalid");
+      field.errorEl.textContent = "";
+      field.errorEl.classList.remove("is-visible");
+    }
+
+    // Clear a field's error the moment the user starts correcting it.
+    requiredFields.forEach(function (field) {
+      field.input.addEventListener("input", function () { clearFieldError(field); });
+    });
+
+    function handleSubmit(event) {
+      // Step 1: stop the native submission — we validate and fake-send manually.
+      event.preventDefault();
+
+      // Step 2: reset any errors left over from a previous attempt.
+      requiredFields.forEach(clearFieldError);
+
+      // Step 3: run validation, collecting the first invalid field as we go.
+      var firstInvalid = null;
+
+      requiredFields.forEach(function (field) {
+        var value = field.input.value.trim();
+        var isEmpty = value === "";
+        var isBadEmail = field.input.id === "email" && value !== "" && !emailPattern.test(value);
+
+        if (isEmpty || isBadEmail) {
+          showFieldError(field);
+          if (!firstInvalid) firstInvalid = field.input;
+        }
+      });
+
+      // Step 4: bail out and focus the first bad field if anything failed.
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      // Step 5: valid — lock the button and show a loading state.
+      submitBtn.disabled = true;
+      submitBtn.classList.add("is-loading");
+      btnLabel.textContent = "Sending…";
+
+      // Step 6: gather the payload for the (simulated) backend call.
+      var formData = {
+        fullName: document.getElementById("fullName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        company: document.getElementById("company").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        budget: document.getElementById("budget").value,
+        details: document.getElementById("details").value.trim(),
+        consent: document.getElementById("consent").checked
+      };
+
+      // Step 7: simulate an async network call, then show the success panel.
+      setTimeout(function () {
+        console.log("Enquiry submitted:", formData);
+
+        var firstName = formData.fullName.split(" ")[0];
+        var wrapper = form.parentElement;
+
+        // Built with DOM APIs (not innerHTML) so user-entered text can't be parsed as markup.
+        var panel = document.createElement("div");
+        panel.className = "success-panel";
+
+        var iconWrap = document.createElement("div");
+        iconWrap.className = "icon-check";
+        iconWrap.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+        var heading = document.createElement("h3");
+        heading.textContent = "Thanks, " + firstName + " — we’ll be in touch within one business day.";
+
+        var body = document.createElement("p");
+        body.textContent = "Keep an eye on " + formData.email + " for a reply from our team.";
+
+        panel.appendChild(iconWrap);
+        panel.appendChild(heading);
+        panel.appendChild(body);
+
+        wrapper.innerHTML = "";
+        wrapper.appendChild(panel);
+      }, 1200);
+    }
+
+    form.addEventListener("submit", handleSubmit);
+
+    /* ---------------- Footer year ---------------- */
+    document.getElementById("copyright").textContent =
+      "© " + new Date().getFullYear() + " Pulse & Co. All rights reserved.";
+  })();
+</script>
+
+</body>
+</html>
